@@ -4,7 +4,8 @@ export type Todo = {
     description: string,
     priority: Priority,
     dueDate: Date,
-    status: Status
+    status: Status,
+    addedDate: Date
 }
 
 export enum Priority {
@@ -14,4 +15,4 @@ export enum Priority {
     'delegate'
 }
 
-export type Status = 'complete'|'incomplete'
+export type Status = 'complete' | 'incomplete'
