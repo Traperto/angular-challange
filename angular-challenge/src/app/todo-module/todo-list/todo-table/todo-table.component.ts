@@ -68,7 +68,7 @@ export class TodoTableComponent implements OnInit, OnChanges {
     }
   }
   watcher() {
-    console.log('re render table');
+    // console.log('re render table');
   }
   correctDisplayColumns(){
     if(this.getScreenWidth < 765) this.displayedColumns = [ 'title', 'status', 'action']

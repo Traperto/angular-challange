@@ -26,5 +26,8 @@ export class TopActionsComponent implements OnInit {
   create(){
     this.createTodo.emit()
   }
+  watcher() {
+    console.log('re render top actions');
+  }
   identify = (index: number, item: string) => item;
 }
