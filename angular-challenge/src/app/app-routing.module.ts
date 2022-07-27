@@ -4,8 +4,14 @@ import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:LayoutComponent,
+    path: '',
+    redirectTo: 'todo-mat',
+    pathMatch: 'full'
+  },
+  {
+    path: 'todo-mat',
+    component: LayoutComponent,
+    loadChildren: () => import('./todo-module/todo-material.module').then(m => m.TodoMaterialModule)
   }
 ];
 

@@ -1,0 +1,22 @@
+<div class="top-actions">
+    <form [formGroup]="filterForm">
+        <mat-form-field appearance="standard">
+            <mat-label>Priorities</mat-label>
+            <mat-select formControlName="priorities" (selectionChange)="filter()" #input>
+                <mat-option [value]="">--Priority--</mat-option>
+                <mat-option *ngFor="let priority of priorities; trackBy:identify" [value]="priority">{{priority}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" (selectionChange)="filter()" #input>
+                <mat-option [value]="">--status--</mat-option>
+                <mat-option [value]="'complete'">Complete</mat-option>
+                <mat-option [value]="'incomplete'">incomplete</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <button class="create" mat-fab color="primary" (click)="create()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
