@@ -12,7 +12,11 @@ const routes: Routes = [
     path: 'todo-mat',
     component: LayoutComponent,
     loadChildren: () => import('./todo-module/todo-material.module').then(m => m.TodoMaterialModule)
-  }
+  },
+  {
+    path: '**',
+    redirectTo: 'todo-mat',
+  },
 ];
 
 @NgModule({

@@ -7,12 +7,26 @@ describe('TodosService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TodosService);
+    service = new TodosService();;
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
     expect(service.getAll().length).toBeGreaterThan(0)
-    expect(service.findById('asdasdasd')).toBeDefined()
+  });
+  it('should find single todo by id', () => {
+    expect(service).toBeTruthy();
+    const todo = service.getAll()[0]
+    const _todo = service.findById(todo.id)
+
+    expect(todo).toEqual(_todo)
+  });
+  it('should delete successfully', () => {
+    expect(service).toBeTruthy();
+    const todosNum = service.getAll().length
+    const todo = service.getAll()[0]
+    service.deleteById(todo.id)
+
+    expect(todosNum).toBeGreaterThan(service.getAll().length)
   });
 });

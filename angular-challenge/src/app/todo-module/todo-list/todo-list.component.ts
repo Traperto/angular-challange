@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 import { Todo } from 'src/app/models/todo';
 import { TodosService } from 'src/app/services/todos.service';
 import { TodoFormComponent } from 'src/app/shared-module/components/todo-form/todo-form.component';
@@ -18,13 +17,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
   statuss: string[] = []
   todos: Todo[] = []
   filter: { priorities?: string; status?: string }
-  subscription: Subscription
 
 
   // dialogRef: 
   constructor(private todoService: TodosService, private dialog: MatDialog, private snackBarService: SnackBarService) { }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe()
   }
 
   ngOnInit(): void {
