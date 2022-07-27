@@ -20,6 +20,7 @@ export class TodoFormComponent implements OnInit {
   });
   ngOnInit(): void {
     if(this.data){
+      delete this.data.addedDate
       this.todoForm.setValue(this.data)
     }
   }

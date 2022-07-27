@@ -14,7 +14,7 @@ export class TodosService {
     return this.todos.slice().sort((a,b)=>b.addedDate.getTime()-a.addedDate.getTime())
   }
   findById(id: string): Todo {
-    return this.todos.find(x => x.id == id)
+    return {...this.todos.find(x => x.id == id)}
   }
   deleteById(id: string): void {
     this.todos.splice(this.todos.findIndex(x => x.id == id), 1)
@@ -25,7 +25,8 @@ export class TodosService {
   }
   edit(todo: Todo) {
     if (todo?.id) {
-      this.todos?.splice(this.todos.findIndex(x => x.id == todo?.id), 1, todo)
+      const _todo = this.todos.find(x => x.id == todo.id)
+      this.todos?.splice(this.todos.findIndex(x => x.id == todo?.id), 1, {...todo, addedDate:_todo.addedDate})
     }
   }
 }
