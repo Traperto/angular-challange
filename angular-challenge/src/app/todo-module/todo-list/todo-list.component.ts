@@ -56,7 +56,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   openFormDialog(todo?: Todo): void {
     this.dialog.open(TodoFormComponent, {
       data: todo,
-      width: '50%',
+      // panelClass: 'form-dialog',
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '100ms',
     }).afterClosed().pipe(take(1)).subscribe(data => {
