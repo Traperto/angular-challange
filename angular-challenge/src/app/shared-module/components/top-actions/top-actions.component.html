@@ -16,6 +16,16 @@
             </mat-select>
         </mat-form-field>
     </form>
+    <div *ngIf="!currentUrl.includes('todo-mat')" class="sort">
+        <mat-form-field appearance="standard">
+            <mat-label>Status</mat-label>
+            <mat-select {(ngModel)}="sort" (selectionChange)="filter()" #input>
+                <mat-option [value]="">--status--</mat-option>
+                <mat-option [value]="'complete'">Complete</mat-option>
+                <mat-option [value]="'incomplete'">incomplete</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
     <button class="create" mat-fab color="primary" (click)="create()">
         <mat-icon>add</mat-icon>
     </button>

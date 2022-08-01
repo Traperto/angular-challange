@@ -19,6 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { TopActionsComponent } from './components/top-actions/top-actions.component';
 
 
 const material = [
@@ -45,7 +46,7 @@ const material = [
 ]
 
 @NgModule({
-  declarations: [PriorityPipe, TodoFormComponent, ConfirmDialogComponent],
+  declarations: [PriorityPipe, TodoFormComponent, ConfirmDialogComponent, TopActionsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -53,6 +54,7 @@ const material = [
 
   ],
   exports: [
+    TopActionsComponent,
     PriorityPipe,
     ...material
   ]

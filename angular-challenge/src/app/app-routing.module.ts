@@ -14,6 +14,11 @@ const routes: Routes = [
     loadChildren: () => import('./todo-module/todo-material.module').then(m => m.TodoMaterialModule)
   },
   {
+    path: 'todo-v2',
+    component: LayoutComponent,
+    loadChildren: () => import('./todo-v2/todo-v2.module').then(m => m.TodoV2Module)
+  },
+  {
     path: '**',
     redirectTo: 'todo-mat',
   },
