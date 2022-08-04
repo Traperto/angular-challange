@@ -1,0 +1,9 @@
+<div class="container">
+    <mat-checkbox (change)="statusChanged($event, todo.id)" [(ngModel)]="done"></mat-checkbox>
+    <p>{{todo.title}}</p>
+    <p>{{todo.dueDate | date:'shortDate'}}</p>
+    <div class="actions">
+        <mat-icon (click)="_edit(todo.id)">edit</mat-icon>
+        <mat-icon (click)="_delete(todo.id)">delete</mat-icon>
+</div>
+</div>

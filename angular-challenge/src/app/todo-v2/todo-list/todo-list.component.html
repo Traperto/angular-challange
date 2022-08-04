@@ -1,0 +1,4 @@
+<div class="container">
+    <app-top-actions (filterSelected)="applyFilter($event)" (createTodo)="edit_create_Todo()" (sortSelected)="applySort($event)"></app-top-actions>
+    <app-todo-item [todo]="item" *ngFor="let item of todos | async; trackBy : trackByFn " (edit)="edit_create_Todo(item.id)" (delete)="deleteTodo($event)" (toggleStatus)="toggleStatus($event)"></app-todo-item>
+</div>

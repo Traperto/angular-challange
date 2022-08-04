@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PriorityPipe } from './pipes/priority.pipe';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { TopActionsComponent } from './components/top-actions/top-actions.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 const material = [
@@ -42,7 +43,8 @@ const material = [
   MatSortModule,
   MatPaginatorModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatCheckboxModule
 ]
 
 @NgModule({
@@ -50,6 +52,7 @@ const material = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     ...material
 
   ],

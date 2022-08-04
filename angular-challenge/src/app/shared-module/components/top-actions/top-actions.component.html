@@ -16,18 +16,30 @@
             </mat-select>
         </mat-form-field>
     </form>
-    <div *ngIf="!currentUrl.includes('todo-mat')" class="sort">
+    <form *ngIf="!currentUrl.includes('todo-mat')" class="sort" [formGroup]="sortForm">
         <mat-form-field appearance="standard">
-            <mat-label>Status</mat-label>
-            <mat-select {(ngModel)}="sort" (selectionChange)="filter()" #input>
-                <mat-option [value]="">--status--</mat-option>
-                <mat-option [value]="'complete'">Complete</mat-option>
-                <mat-option [value]="'incomplete'">incomplete</mat-option>
+            <mat-label>Sort By</mat-label>
+            <mat-select formControlName="property" (selectionChange)="sortFn()" #input>
+                <mat-option [value]="">--property--</mat-option>
+                <mat-option [value]="'title'">title</mat-option>
+                <mat-option [value]="'priority'">priority</mat-option>
+                <mat-option [value]="'dueDate'">dueDate</mat-option>
+
+                
             </mat-select>
         </mat-form-field>
-    </div>
+        <mat-form-field appearance="standard">
+            <mat-label>Order</mat-label>
+            <mat-select formControlName="type" (selectionChange)="sortFn()" #input>
+                <mat-option [value]="">--type--</mat-option>
+                <mat-option [value]="'ascending'">ascending</mat-option>
+                <mat-option [value]="'descending'">descending</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+
     <button class="create" mat-fab color="primary" (click)="create()">
         <mat-icon>add</mat-icon>
     </button>
 </div>
-{{watcher()}}
+<!-- {{watcher()}} -->

@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    // flex-flow: column;
     gap: 20px;
     form{
         display: flex;
@@ -13,5 +14,5 @@
     }
 }
 ::ng-deep.mat-form-field-infix{
-    width: 25vw !important;
+    width: 15vw !important;
 }

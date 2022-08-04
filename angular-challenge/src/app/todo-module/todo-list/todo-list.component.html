@@ -1,4 +1,4 @@
 <div class="container">
     <app-top-actions (filterSelected)="applyFilter($event)" (createTodo)="edit_create_Todo()"></app-top-actions>
-    <app-todo-table [todos]="todos" [filter]="filter" (edit)="edit_create_Todo($event)" (delete)="deleteTodo($event)"></app-todo-table>
+    <app-todo-table [todos]="todos | async" [filter]="filter" (edit)="edit_create_Todo($event)" (delete)="deleteTodo($event)"></app-todo-table>
 </div>

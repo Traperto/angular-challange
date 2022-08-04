@@ -1,0 +1,21 @@
+:host{
+    width: 80%;
+}
+.container{
+    margin-top: 10px;
+    display: flex;
+    gap: 10%;
+    background-color: rgba(188, 224, 255, 0.158);
+    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px;
+    p{
+        margin: 0;
+    }
+    // width: 80%;
+    .actions{
+        margin-left: auto;
+    }
+}

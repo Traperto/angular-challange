@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Todo } from 'src/app/models/todo';
+import { Priority, Todo } from 'src/app/models/todo';
 import { TodosService } from 'src/app/services/todos.service';
 import { TodoFormComponent } from 'src/app/shared-module/components/todo-form/todo-form.component';
-import { take } from 'rxjs/operators';
+import { combineLatest, combineLatestWith, map, Observable, take } from 'rxjs';
 import { SnackBarService } from 'src/app/services/snack-bar.service';
 import { ConfirmDialogComponent } from 'src/app/shared-module/components/confirm-dialog/confirm-dialog.component';
 
@@ -15,7 +15,7 @@ import { ConfirmDialogComponent } from 'src/app/shared-module/components/confirm
 export class TodoListComponent implements OnInit, OnDestroy {
   priorities: string[] = ['urgent', 'normal', 'later', 'delegate']
   statuss: string[] = []
-  todos: Todo[] = []
+  todos: Observable<Todo[]>
   filter: { priorities?: string; status?: string }
 
 
@@ -26,7 +26,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.refreshDataSource()
+    this.todos = this.todoService.todos.pipe(
+      map((todos: Todo[]) => {
+        return todos.map(x => {return {...x}}).sort((a, b) => b.addedDate.getTime() - a.addedDate.getTime())
+      })
+    )
 
   }
 
@@ -45,11 +49,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
     if (id) todo = this.todoService.findById(id)
     this.openConfirmDialog(todo)
     console.log(id);
-    this.refreshDataSource()
   }
-  refreshDataSource() {
-    this.todos = this.todoService.getAll()
-  }
+
   openFormDialog(todo?: Todo): void {
     this.dialog.open(TodoFormComponent, {
       data: todo,
@@ -63,7 +64,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
       else this.todoService.edit(data)
       console.log(data, 'ng dialog')
       this.snackBarService.openSnackBar('Success', 'Dismiss', 1500)
-      this.refreshDataSource()
     }
     );
   }
@@ -78,7 +78,6 @@ export class TodoListComponent implements OnInit, OnDestroy {
       if (!data) return
       this.todoService.deleteById(data.id)
       this.snackBarService.openSnackBar(`${data.title} Delete Success`, 'Dismiss', 1500)
-      this.refreshDataSource()
     }
     );
   }
